@@ -50,13 +50,13 @@ public class JokeController : ControllerBase {
             switch(joke.type) {
                 case "twopart":
                     items.items.Add(new Joke() {
-                        title = $"a {(i == 0 ? "Any" : joke.category)} joke",
+                        title = $"a {(i == 0 ? "" : joke.category)} joke",
                         detail = $"{joke.setup}... {joke.delivery}"
                     });
                     break;
                 case "single":
                     items.items.Add(new Joke() {
-                        title = $"a {(i == 0 ? "Any" : joke.category)} joke",
+                        title = $"a {(i == 0 ? "" : joke.category)} joke",
                         detail = joke.joke
                     });
                     break;
