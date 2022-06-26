@@ -47,18 +47,16 @@ public class JokeController : ControllerBase {
             string json = await httpClient.GetStringAsync(jokeAPI);
             joke = JsonConvert.DeserializeObject<Response>(json);
             if (joke == null || joke.error) continue;
-            Console.WriteLine(joke.error);
-            Console.WriteLine(joke.type);
             switch(joke.type) {
                 case "twopart":
                     items.items.Add(new Joke() {
-                        title = i == 0 ? "Any" : joke.category,
-                        detail = joke.setup + "... " + joke.delivery
+                        title = $"a {(i == 0 ? "Any" : joke.category)} joke",
+                        detail = $"{joke.setup}... {joke.delivery}"
                     });
                     break;
                 case "single":
                     items.items.Add(new Joke() {
-                        title = i == 0 ? "Any" : joke.category,
+                        title = $"a {(i == 0 ? "Any" : joke.category)} joke",
                         detail = joke.joke
                     });
                     break;
